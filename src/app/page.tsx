@@ -7,7 +7,6 @@ import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 
 export default function SantaFeHome() {
@@ -36,9 +35,9 @@ export default function SantaFeHome() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <Image src="/images/okeeffe-museum.jpg" alt="O'Keeffe Museum" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">Georgia O'Keeffe Museum</h3>
-              <p className="text-sm text-gray-600">Discover the work and legacy of one of New Mexico's most beloved artists.</p>
+              <Image src="/images/okeeffe-museum.jpg" alt="O&rsquoKeeffe Museum" width={800} height={500} className="rounded-lg mb-2" />
+              <h3 className="text-lg font-bold">Georgia O&rsquo;Keeffe Museum</h3>
+              <p className="text-sm text-gray-600">Discover the work and legacy of one of New Mexico&rsquo;s most beloved artists.</p>
               <Button className="mt-2">Learn More</Button>
             </CardContent>
           </Card>
@@ -52,7 +51,7 @@ export default function SantaFeHome() {
             <CardContent className="p-4">
               <Image src="/images/la-choza.jpg" alt="La Choza" width={800} height={500} className="rounded-lg mb-2" />
               <h3 className="text-lg font-bold">La Choza</h3>
-              <p className="text-sm text-gray-600">Classic New Mexican cuisine with locals' favorite green chile enchiladas.</p>
+              <p className="text-sm text-gray-600">Classic New Mexican cuisine with locals&rsquo; favorite green chile enchiladas.</p>
               <Button className="mt-2">View Restaurant</Button>
             </CardContent>
           </Card>
@@ -150,7 +149,7 @@ export default function SantaFeHome() {
             <CardContent className="p-4">
               <Image src="/images/la-choza.jpg" alt="Local Cuisine Highlights" width={800} height={500} className="rounded-lg mb-2" />
               <h3 className="text-lg font-bold">Local Cuisine Highlights</h3>
-              <p className="text-sm text-gray-600">Top dishes to try while you're in town—from green chile stew to posole.</p>
+              <p className="text-sm text-gray-600">Top dishes to try while you&rsquo;re in town—from green chile stew to posole.</p>
               <Button className="mt-2">Read More</Button>
             </CardContent>
           </Card>
@@ -174,7 +173,7 @@ export default function SantaFeHome() {
           <Card>
             <CardContent className="p-4">
               <Image src="/images/testimonials.jpg" alt="Testimonial 1" width={800} height={500} className="rounded-lg mb-2" />
-              <p className="text-sm text-gray-600">“One of the most beautiful cities we've visited. The art and culture blew us away!”</p>
+              <p className="text-sm text-gray-600">“One of the most beautiful cities we&rsquo;ve visited. The art and culture blew us away!”</p>
               <p className="text-xs text-gray-500 mt-2">– Jenna, Texas</p>
             </CardContent>
           </Card>
