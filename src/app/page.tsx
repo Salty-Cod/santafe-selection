@@ -1,6 +1,8 @@
 // Santa Fe Selection - Expanded Page Layouts with Demo Images
 // Pages included: Home, Activities, Dining, Lodging, Art Galleries, Maps, Request Guide, Blog, About, Testimonials
 
+"use client";
+
 import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
