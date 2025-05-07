@@ -35,7 +35,7 @@ export default function SantaFeHome() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <Image src="/images/okeeffe-museum.jpg" alt="O&rsquoKeeffe Museum" width={800} height={500} className="rounded-lg mb-2" />
+              <Image src="/images/okeeffe-museum.jpg" alt="O&rsquo;Keeffe Museum" width={800} height={500} className="rounded-lg mb-2" />
               <h3 className="text-lg font-bold">Georgia O&rsquo;Keeffe Museum</h3>
               <p className="text-sm text-gray-600">Discover the work and legacy of one of New Mexico&rsquo;s most beloved artists.</p>
               <Button className="mt-2">Learn More</Button>
