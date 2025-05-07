@@ -2,9 +2,17 @@
 const nextConfig = {
   output: "standalone",
   images: {
-    domains: ["localhost", "santafe-selection.vercel.app"],
     unoptimized: false,
     path: "/_next/image/",
+  },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        fs: false,
+        path: false,
+      };
+    }
+    return config;
   },
 };
 
