@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ["localhost", "santafe-selection.vercel.app"],
     unoptimized: false,
+    path: "/_next/image/",
   },
 };
 

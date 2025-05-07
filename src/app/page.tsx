@@ -27,7 +27,7 @@ export default function SantaFeHome() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
           <Card>
             <CardContent className="p-4">
-              <Image src="/images/canyon-road.jpg" alt="Canyon Road" width={800} height={500} className="rounded-lg mb-2" />
+              <Image src="images/canyon-road.jpg" alt="Canyon Road" width={800} height={500} className="rounded-lg mb-2" />
               <h3 className="text-lg font-bold">Canyon Road Art Walk</h3>
               <p className="text-sm text-gray-600">Explore one of the most iconic streets in Santa Fe full of galleries and history.</p>
               <Button className="mt-2">Learn More</Button>
@@ -35,7 +35,7 @@ export default function SantaFeHome() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <Image src="/images/okeeffe-museum.jpg" alt="O&rsquo;Keeffe Museum" width={800} height={500} className="rounded-lg mb-2" />
+              <Image src="images/okeeffe-museum.jpg" alt="O&rsquo;Keeffe Museum" width={800} height={500} className="rounded-lg mb-2" />
               <h3 className="text-lg font-bold">Georgia O&rsquo;Keeffe Museum</h3>
               <p className="text-sm text-gray-600">Discover the work and legacy of one of New Mexico&rsquo;s most beloved artists.</p>
               <Button className="mt-2">Learn More</Button>
@@ -49,7 +49,7 @@ export default function SantaFeHome() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <Card>
             <CardContent className="p-4">
-              <Image src="/images/la-choza.jpg" alt="La Choza" width={800} height={500} className="rounded-lg mb-2" />
+              <Image src="images/la-choza.jpg" alt="La Choza" width={800} height={500} className="rounded-lg mb-2" />
               <h3 className="text-lg font-bold">La Choza</h3>
               <p className="text-sm text-gray-600">Classic New Mexican cuisine with locals&rsquo; favorite green chile enchiladas.</p>
               <Button className="mt-2">View Restaurant</Button>
@@ -57,7 +57,7 @@ export default function SantaFeHome() {
           </Card>
           <Card>
             <CardContent className="p-4">
-              <Image src="/images/the-shed.jpg" alt="The Shed" width={800} height={500} className="rounded-lg mb-2" />
+              <Image src="images/the-shed.jpg" alt="The Shed" width={800} height={500} className="rounded-lg mb-2" />
               <h3 className="text-lg font-bold">The Shed</h3>
               <p className="text-sm text-gray-600">Historic adobe restaurant serving traditional dishes since 1953.</p>
               <Button className="mt-2">View Restaurant</Button>
