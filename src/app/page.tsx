@@ -172,7 +172,7 @@ export default function SantaFeHome() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
           <Card>
             <CardContent className="p-4">
-              <Image src="/images/testimonials.jpg" alt="Testimonial 1" width={800} height={500} className="rounded-lg mb-2" />
+              <Image src="/images/testimonials.jpg" alt="Testimonial 1.0" width={800} height={500} className="rounded-lg mb-2" />
               <p className="text-sm text-gray-600">“One of the most beautiful cities we&rsquo;ve visited. The art and culture blew us away!”</p>
               <p className="text-xs text-gray-500 mt-2">– Jenna, Texas</p>
             </CardContent>
