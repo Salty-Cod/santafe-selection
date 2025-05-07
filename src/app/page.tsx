@@ -8,9 +8,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
+import { motion } from "framer-motion";
+import { CheckIcon } from "lucide-react";
 
-export default function SantaFeHome() {
+export default function Home() {
   const [search, setSearch] = useState("");
+  const [newsletterEmail, setNewsletterEmail] = useState("");
+  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
 
   return (
     <div className="p-4 space-y-6">
@@ -66,6 +70,7 @@ export default function SantaFeHome() {
         </div>
       </section>
 
+      {/* Lodging Options */}
       <section>
         <h2 className="text-2xl font-semibold text-red-700">Lodging Options</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -88,6 +93,7 @@ export default function SantaFeHome() {
         </div>
       </section>
 
+      {/* Featured Art Galleries */}
       <section>
         <h2 className="text-2xl font-semibold text-red-700">Featured Art Galleries</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
@@ -110,30 +116,7 @@ export default function SantaFeHome() {
         </div>
       </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold text-red-700">Interactive Map</h2>
-        <Card>
-          <CardContent className="p-4">
-            <Image src="/images/interactive-map.jpg" alt="Interactive Map" width={800} height={500} className="rounded-lg mb-2" />
-            <p className="text-sm text-gray-600">Use our interactive map to find attractions, restaurants, lodging, and more around Santa Fe.</p>
-            <Button className="mt-2">View Map</Button>
-          </CardContent>
-        </Card>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold text-red-700">Request Your Free Guide</h2>
-        <Card>
-          <CardContent className="p-4 space-y-2">
-            <Image src="/images/guide-request.jpg" alt="Request a Free Guide" width={800} height={500} className="rounded-lg mb-2" />
-            <Input placeholder="Full Name" />
-            <Input placeholder="Email Address" />
-            <Input placeholder="Mailing Address" />
-            <Button className="mt-2">Request Guide</Button>
-          </CardContent>
-        </Card>
-      </section>
-
+      {/* From the Blog */}
       <section>
         <h2 className="text-2xl font-semibold text-red-700">From the Blog</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
@@ -149,7 +132,7 @@ export default function SantaFeHome() {
             <CardContent className="p-4">
               <Image src="/images/la-choza.jpg" alt="Local Cuisine Highlights" width={800} height={500} className="rounded-lg mb-2" />
               <h3 className="text-lg font-bold">Local Cuisine Highlights</h3>
-              <p className="text-sm text-gray-600">Top dishes to try while you&rsquo;re in town—from green chile stew to posole.</p>
+              <p className="text-sm text-gray-600">Top dishes to try while you're in town—from green chile stew to posole.</p>
               <Button className="mt-2">Read More</Button>
             </CardContent>
           </Card>
