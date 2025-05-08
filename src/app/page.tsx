@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckIcon } from "lucide-react";
@@ -7,8 +9,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useTheme } from "@/contexts/ThemeContext";
-import { NewsletterForm } from "@/components/NewsletterForm";
-import { SearchBar } from "@/components/SearchBar";
+import { NewsletterForm } from "../components/NewsletterForm";
+import { SearchBar } from "../components/SearchBar";
 
 interface SectionItem {
   title: string;
