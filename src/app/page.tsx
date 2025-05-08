@@ -1,20 +1,197 @@
-// Santa Fe Selection - Expanded Page Layouts with Demo Images
-// Pages included: Home, Activities, Dining, Lodging, Art Galleries, Maps, Request Guide, Blog, About, Testimonials
-
-"use client";
-
-import Image from "next/image";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { CheckIcon } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { useTheme } from "@/contexts/ThemeContext";
+import { NewsletterForm } from "@/components/NewsletterForm";
+import { SearchBar } from "@/components/SearchBar";
+
+interface SectionItem {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  category: string;
+}
+
+const ACTIVITIES: SectionItem[] = [
+  {
+    title: "Canyon Road Art Walk",
+    description: "Explore one of the most iconic streets in Santa Fe full of galleries and history.",
+    image: "/images/canyon-road.jpg",
+    link: "/activities/canyon-road",
+    category: "activities"
+  },
+  {
+    title: "Georgia O'Keeffe Museum",
+    description: "Discover the work and legacy of one of New Mexico's most beloved artists.",
+    image: "/images/okeeffe-museum.jpg",
+    link: "/activities/okeeffe-museum",
+    category: "activities"
+  }
+];
+
+const DINING: SectionItem[] = [
+  {
+    title: "La Choza",
+    description: "Classic New Mexican cuisine with locals' favorite green chile enchiladas.",
+    image: "/images/la-choza.jpg",
+    link: "/dining/la-choza",
+    category: "dining"
+  },
+  {
+    title: "The Shed",
+    description: "Historic adobe restaurant serving traditional dishes since 1953.",
+    image: "/images/the-shed.jpg",
+    link: "/dining/the-shed",
+    category: "dining"
+  }
+];
+
+const LODGING: SectionItem[] = [
+  {
+    title: "Inn of the Governors",
+    description: "A charming inn in the heart of downtown Santa Fe offering comfort and tradition.",
+    image: "/images/inn-of-the-governors.jpg",
+    link: "/lodging/inn-of-the-governors",
+    category: "lodging"
+  },
+  {
+    title: "El Rey Court",
+    description: "Retro-chic hotel with a modern Southwestern vibe and outdoor soaking tubs.",
+    image: "/images/el-rey-court.jpg",
+    link: "/lodging/el-rey-court",
+    category: "lodging"
+  }
+];
 
 export default function Home() {
+  const { isDarkMode } = useTheme();
   const [search, setSearch] = useState("");
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
+
+  const handleSearch = (query: string) => {
+    setSearch(query);
+    // Implement search functionality here
+  };
+
+  return (
+    <main className="min-h-screen bg-background">
+      <SearchBar
+        value={search}
+        onChange={handleSearch}
+        placeholder="Search activities, restaurants, lodging..."
+      />
+
+      <div className="container mx-auto px-4 py-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-4xl font-bold text-red-800 mb-4">
+            Santa Fe Selection
+          </h1>
+          <p className="text-lg text-gray-700 mb-8">
+            Your guide to the best of Santa Fe and Northern New Mexico
+          </p>
+        </motion.div>
+
+        <NewsletterForm />
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-red-700 mb-6">
+            Top Activities
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {ACTIVITIES.map((item) => (
+              <Card key={item.title}>
+                <CardContent className="p-4">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={800}
+                    height={500}
+                    className="rounded-lg mb-2"
+                    priority
+                  />
+                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    {item.description}
+                  </p>
+                  <Link href={item.link}>
+                    <Button className="w-full">Learn More</Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* Similar pattern for Dining and Lodging sections */}
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-red-700 mb-6">
+            Where to Eat
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {DINING.map((item) => (
+              <Card key={item.title}>
+                <CardContent className="p-4">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={800}
+                    height={500}
+                    className="rounded-lg mb-2"
+                    priority
+                  />
+                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    {item.description}
+                  </p>
+                  <Link href={item.link}>
+                    <Button className="w-full">View Restaurant</Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        <section className="mb-12">
+          <h2 className="text-2xl font-semibold text-red-700 mb-6">
+            Lodging Options
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {LODGING.map((item) => (
+              <Card key={item.title}>
+                <CardContent className="p-4">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={800}
+                    height={500}
+                    className="rounded-lg mb-2"
+                    priority
+                  />
+                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
+                  <p className="text-sm text-gray-600 mb-4">
+                    {item.description}
+                  </p>
+                  <Link href={item.link}>
+                    <Button className="w-full">View Lodging</Button>
+                  </Link>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </section>
+      </div>
+    </main>
+  );
 
   return (
     <div className="p-4 space-y-6">
