@@ -12,8 +12,13 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(() => {
-    const savedTheme = localStorage.getItem('theme');
-    return savedTheme === 'dark';
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      return savedTheme === 'dark';
+    } catch (error) {
+      console.warn('LocalStorage not available. Using default theme.');
+      return false;
+    }
   });
 
   useEffect(() => {
