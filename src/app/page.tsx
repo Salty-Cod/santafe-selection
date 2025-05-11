@@ -1,353 +1,273 @@
 'use client';
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { CheckIcon } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { useTheme } from "@/contexts/ThemeContext";
-import { NewsletterForm } from "../components/NewsletterForm";
-import { SearchBar } from "../components/SearchBar";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { useTheme } from '@/contexts/ThemeContext';
+import { NewsletterForm } from '@/components/NewsletterForm';
+import { SearchBar } from '@/components/SearchBar';
+import { FeaturedSection } from '@/components/FeaturedSection';
+import Hero from '@/components/Hero';
 
-interface SectionItem {
+interface Item {
   title: string;
   description: string;
   image: string;
   link: string;
-  category: string;
 }
 
-const ACTIVITIES: SectionItem[] = [
+const DINING: Item[] = [
   {
-    title: "Canyon Road Art Walk",
-    description: "Explore one of the most iconic streets in Santa Fe full of galleries and history.",
-    image: "/images/canyon-road.jpg",
-    link: "/activities/canyon-road",
-    category: "activities"
+    title: 'The Shed',
+    description: 'Gastropub serving creative, farm-to-table comfort food.',
+    image: '/images/the-shed.jpg',
+    link: '/dining/the-shed',
+  },
+  {
+    title: 'La Choza Restaurant',
+    description: 'Traditional New Mexican cuisine in a cozy, rustic setting.',
+    image: '/images/la-choza.jpg',
+    link: '/dining/la-choza',
+  },
+  {
+    title: 'The Plaza Cafe',
+    description: 'Santa Fe institution serving classic American comfort food.',
+    image: '/images/the-plaza-cafe.jpg',
+    link: '/dining/the-plaza-cafe',
+  },
+];
+
+const LODGING: Item[] = [
+  {
+    title: 'Hotel St. Francis',
+    description: 'Historic hotel with elegant rooms and a relaxing courtyard.',
+    image: '/images/hotel-st-francis.jpg',
+    link: '/lodging/hotel-st-francis',
+  },
+  {
+    title: 'Inn and Spa at Loretto',
+    description: 'Luxurious accommodations with a full-service spa and stunning views.',
+    image: '/images/inn-and-spa-at-loretto.jpg',
+    link: '/lodging/inn-and-spa-at-loretto',
+  },
+  {
+    title: 'La Fonda on the Plaza',
+    description: 'Iconic hotel with comfortable rooms and a vibrant atmosphere.',
+    image: '/images/la-fonda-on-the-plaza.jpg',
+    link: '/lodging/la-fonda-on-the-plaza',
+  },
+];
+
+const ACTIVITIES: Item[] = [
+  {
+    title: 'Canyon Road Art Walk',
+    description: 'Explore one of the most iconic streets in Santa Fe full of galleries and history.',
+    image: '/images/canyon-road.jpg',
+    link: '/activities/canyon-road',
   },
   {
     title: "Georgia O'Keeffe Museum",
     description: "Discover the work and legacy of one of New Mexico's most beloved artists.",
-    image: "/images/okeeffe-museum.jpg",
-    link: "/activities/okeeffe-museum",
-    category: "activities"
-  }
-];
-
-const DINING: SectionItem[] = [
-  {
-    title: "La Choza",
-    description: "Classic New Mexican cuisine with locals' favorite green chile enchiladas.",
-    image: "/images/la-choza.jpg",
-    link: "/dining/la-choza",
-    category: "dining"
+    image: '/images/okeeffe-museum.jpg',
+    link: '/activities/okeeffe-museum',
   },
   {
-    title: "The Shed",
-    description: "Historic adobe restaurant serving traditional dishes since 1953.",
-    image: "/images/the-shed.jpg",
-    link: "/dining/the-shed",
-    category: "dining"
-  }
+    title: 'Bandelier National Monument',
+    description: 'Ancient cliff dwellings and petroglyphs in a beautiful canyon setting.',
+    image: '/images/bandelier.jpg',
+    link: '/activities/bandelier',
+  },
 ];
 
-const LODGING: SectionItem[] = [
+const SHOPPING: Item[] = [
   {
-    title: "Inn of the Governors",
-    description: "A charming inn in the heart of downtown Santa Fe offering comfort and tradition.",
-    image: "/images/inn-of-the-governors.jpg",
-    link: "/lodging/inn-of-the-governors",
-    category: "lodging"
+    title: 'Santa Fe Plaza',
+    description: 'Historic heart of the city with Native American artisans and local shops.',
+    image: '/images/plaza.jpg',
+    link: '/shopping/plaza',
   },
   {
-    title: "El Rey Court",
-    description: "Retro-chic hotel with a modern Southwestern vibe and outdoor soaking tubs.",
-    image: "/images/el-rey-court.jpg",
-    link: "/lodging/el-rey-court",
-    category: "lodging"
-  }
+    title: 'Rainbow Man',
+    description: 'Vintage Native American jewelry and folk art.',
+    image: '/images/rainbow-man.jpg',
+    link: '/shopping/rainbow-man',
+  },
+  {
+    title: 'Double Take',
+    description: 'High-end consignment with designer Western wear.',
+    image: '/images/double-take.jpg',
+    link: '/shopping/double-take',
+  },
+];
+
+const ART_CULTURE: Item[] = [
+  {
+    title: 'SITE Santa Fe',
+    description: 'Contemporary art museum with rotating international exhibitions.',
+    image: '/images/site-santa-fe.jpg',
+    link: '/art-culture/site-santa-fe',
+  },
+  {
+    title: 'Museum Hill',
+    description: 'Four museums showcasing Native American, Spanish Colonial, and folk art.',
+    image: '/images/museum-hill.jpg',
+    link: '/art-culture/museum-hill',
+  },
+  {
+    title: 'Santa Fe Opera',
+    description: 'World-renowned outdoor opera theater with stunning sunset views.',
+    image: '/images/santa-fe-opera.jpg',
+    link: '/art-culture/opera',
+  },
 ];
 
 export default function Home() {
-  const { isDarkMode } = useTheme();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
-  const handleSearch = (query: string) => {
-    setSearch(query);
-    // Implement search functionality here
+  const handleSearch = (value: string) => {
+    setSearch(value);
   };
 
   return (
-    <main className="min-h-screen bg-background">
-      <SearchBar
-        value={search}
-        onChange={handleSearch}
-        placeholder="Search activities, restaurants, lodging..."
-      />
+    <main className="min-h-screen bg-white dark:bg-gray-900">
+      {/* Hero Section */}
+      <Hero />
 
-      <div className="container mx-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <h1 className="text-4xl font-bold text-red-800 mb-4">
-            Santa Fe Selection
-          </h1>
-          <p className="text-lg text-gray-700 mb-8">
-            Your guide to the best of Santa Fe and Northern New Mexico
-          </p>
-        </motion.div>
+      {/* Main Content */}
+      <div className="pt-24">
+        {/* Search Bar */}
+        <div className="container mx-auto px-4 mb-12">
+          <SearchBar
+            value={search}
+            onChange={handleSearch}
+            placeholder="Search activities, restaurants, lodging..."
+          />
+        </div>
 
-        <NewsletterForm />
+        {/* Newsletter */}
+        <div className="container mx-auto px-4 mb-16">
+          <NewsletterForm />
+        </div>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-red-700 mb-6">
-            Top Activities
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {ACTIVITIES.map((item) => (
-              <Card key={item.title}>
-                <CardContent className="p-4">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={800}
-                    height={500}
-                    className="rounded-lg mb-2"
-                    priority
-                  />
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4">
-                    {item.description}
-                  </p>
-                  <Link href={item.link}>
-                    <Button className="w-full">Learn More</Button>
-                  </Link>
-                </CardContent>
-              </Card>
-            ))}
+        {/* Featured Sections */}
+        <FeaturedSection
+          title="Featured Activities"
+          items={ACTIVITIES}
+          className="bg-amber-50/50 dark:bg-amber-950/10"
+        />
+
+        <FeaturedSection
+          title="Where to Dine"
+          items={DINING}
+        />
+
+        <FeaturedSection
+          title="Shopping"
+          items={SHOPPING}
+          className="bg-amber-50/50 dark:bg-amber-950/10"
+        />
+
+        <FeaturedSection
+          title="Art & Culture"
+          items={ART_CULTURE}
+        />
+
+        {/* About Santa Fe */}
+        <section className="py-16 bg-amber-50/50 dark:bg-amber-950/10">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-4xl mx-auto text-center"
+            >
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-amber-800 dark:text-amber-500 mb-6">
+                About Santa Fe
+              </h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+                Discover the magic of Santa Fe, where centuries-old adobe
+                architecture meets vibrant art markets, and traditional New
+                Mexican flavors blend with innovative Southwest cuisine.
+              </p>
+              <Link
+                href="/about"
+                className="
+                  inline-block bg-amber-700 hover:bg-amber-800
+                  text-white font-medium px-8 py-3 rounded-full
+                  transition-all duration-300 hover:shadow-lg
+                  hover:scale-105
+                "
+              >
+                Learn More About Santa Fe
+              </Link>
+            </motion.div>
           </div>
         </section>
 
-        {/* Similar pattern for Dining and Lodging sections */}
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-red-700 mb-6">
-            Where to Eat
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {DINING.map((item) => (
-              <Card key={item.title}>
-                <CardContent className="p-4">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={800}
-                    height={500}
-                    className="rounded-lg mb-2"
-                    priority
-                  />
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4">
-                    {item.description}
+        {/* Testimonials Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-amber-800 dark:text-amber-500 mb-8 text-center">
+              What Visitors Are Saying
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <Image 
+                      src="/images/testimonials-1.jpg" 
+                      alt="Visitor testimonial" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 italic">
+                    "One of the most beautiful cities we've visited. The art and culture blew us away!"
                   </p>
-                  <Link href={item.link}>
-                    <Button className="w-full">View Restaurant</Button>
-                  </Link>
+                  <p className="text-sm text-amber-700 dark:text-amber-500 font-medium">– Jenna, Texas</p>
                 </CardContent>
               </Card>
-            ))}
-          </div>
-        </section>
 
-        <section className="mb-12">
-          <h2 className="text-2xl font-semibold text-red-700 mb-6">
-            Lodging Options
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {LODGING.map((item) => (
-              <Card key={item.title}>
-                <CardContent className="p-4">
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    width={800}
-                    height={500}
-                    className="rounded-lg mb-2"
-                    priority
-                  />
-                  <h3 className="text-lg font-bold mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-600 mb-4">
-                    {item.description}
+              <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <Image 
+                      src="/images/testimonials-2.jpg" 
+                      alt="Visitor testimonial" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 italic">
+                    "Santa Fe Selection helped us plan a perfect trip. The guide was spot-on."
                   </p>
-                  <Link href={item.link}>
-                    <Button className="w-full">View Lodging</Button>
-                  </Link>
+                  <p className="text-sm text-amber-700 dark:text-amber-500 font-medium">– Raj, California</p>
                 </CardContent>
               </Card>
-            ))}
+
+              <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 md:col-span-2 lg:col-span-1">
+                <CardContent className="p-6">
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <Image 
+                      src="/images/testimonials-3.jpg" 
+                      alt="Visitor testimonial" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 italic">
+                    "The local cuisine and art galleries exceeded our expectations. Can't wait to return!"
+                  </p>
+                  <p className="text-sm text-amber-700 dark:text-amber-500 font-medium">– Maria, New York</p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </section>
       </div>
     </main>
-  );
-
-  return (
-    <div className="p-4 space-y-6">
-      <header className="text-center">
-        <h1 className="text-4xl font-bold text-red-800">Santa Fe Selection</h1>
-        <p className="text-lg text-gray-700 mt-2">Your guide to the best of Santa Fe and Northern New Mexico</p>
-        <div className="mt-4 max-w-md mx-auto">
-          <Input placeholder="Search activities, restaurants, lodging..." value={search} onChange={(e) => setSearch(e.target.value)} />
-        </div>
-      </header>
-
-      <section>
-        <h2 className="text-2xl font-semibold text-red-700">Top Activities</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/canyon-road.jpg" alt="Canyon Road" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">Canyon Road Art Walk</h3>
-              <p className="text-sm text-gray-600">Explore one of the most iconic streets in Santa Fe full of galleries and history.</p>
-              <Button className="mt-2">Learn More</Button>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/okeeffe-museum.jpg" alt="O&rsquo;Keeffe Museum" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">Georgia O&rsquo;Keeffe Museum</h3>
-              <p className="text-sm text-gray-600">Discover the work and legacy of one of New Mexico&rsquo;s most beloved artists.</p>
-              <Button className="mt-2">Learn More</Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold text-red-700">Where to Eat</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/la-choza.jpg" alt="La Choza" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">La Choza</h3>
-              <p className="text-sm text-gray-600">Classic New Mexican cuisine with locals&rsquo; favorite green chile enchiladas.</p>
-              <Button className="mt-2">View Restaurant</Button>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/the-shed.jpg" alt="The Shed" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">The Shed</h3>
-              <p className="text-sm text-gray-600">Historic adobe restaurant serving traditional dishes since 1953.</p>
-              <Button className="mt-2">View Restaurant</Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Lodging Options */}
-      <section>
-        <h2 className="text-2xl font-semibold text-red-700">Lodging Options</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/inn-of-the-governors.jpg" alt="Inn of the Governors" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">Inn of the Governors</h3>
-              <p className="text-sm text-gray-600">A charming inn in the heart of downtown Santa Fe offering comfort and tradition.</p>
-              <Button className="mt-2">View Lodging</Button>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/el-rey-court.jpg" alt="El Rey Court" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">El Rey Court</h3>
-              <p className="text-sm text-gray-600">Retro-chic hotel with a modern Southwestern vibe and outdoor soaking tubs.</p>
-              <Button className="mt-2">View Lodging</Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* Featured Art Galleries */}
-      <section>
-        <h2 className="text-2xl font-semibold text-red-700">Featured Art Galleries</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/blue-rain-gallery.jpg" alt="Blue Rain Gallery" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">Blue Rain Gallery</h3>
-              <p className="text-sm text-gray-600">Contemporary and Native American art with a national reputation.</p>
-              <Button className="mt-2">Explore Gallery</Button>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/manitou-galleries.jpg" alt="Manitou Galleries" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">Manitou Galleries</h3>
-              <p className="text-sm text-gray-600">Diverse fine art collection in a historic building on Palace Avenue.</p>
-              <Button className="mt-2">Explore Gallery</Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      {/* From the Blog */}
-      <section>
-        <h2 className="text-2xl font-semibold text-red-700">From the Blog</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/santa-fe-blog.jpg" alt="Santa Fe Blog" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">Santa Fe Summer Festivals</h3>
-              <p className="text-sm text-gray-600">Experience the vibrant local traditions through annual music, art, and food events.</p>
-              <Button className="mt-2">Read More</Button>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/la-choza.jpg" alt="Local Cuisine Highlights" width={800} height={500} className="rounded-lg mb-2" />
-              <h3 className="text-lg font-bold">Local Cuisine Highlights</h3>
-              <p className="text-sm text-gray-600">Top dishes to try while you're in town—from green chile stew to posole.</p>
-              <Button className="mt-2">Read More</Button>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold text-red-700">About Santa Fe</h2>
-        <Card>
-          <CardContent className="p-4">
-            <Image src="/images/about-santa-fe.jpg" alt="About Santa Fe" width={800} height={500} className="rounded-lg mb-2" />
-            <p className="text-sm text-gray-600">Santa Fe is the oldest capital city in the United States, known for its Pueblo-style architecture, arts scene, and rich cultural heritage.</p>
-            <Button className="mt-2">Learn More</Button>
-          </CardContent>
-        </Card>
-      </section>
-
-      <section>
-        <h2 className="text-2xl font-semibold text-red-700">What Visitors Are Saying</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/testimonials.jpg" alt="Testimonial 1.0" width={800} height={500} className="rounded-lg mb-2" />
-              <p className="text-sm text-gray-600">“One of the most beautiful cities we&rsquo;ve visited. The art and culture blew us away!”</p>
-              <p className="text-xs text-gray-500 mt-2">– Jenna, Texas</p>
-            </CardContent>
-          </Card>
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/testimonials.jpg" alt="Testimonial 2" width={800} height={500} className="rounded-lg mb-2" />
-              <p className="text-sm text-gray-600">“Santa Fe Selection helped us plan a perfect trip. The guide was spot-on.”</p>
-              <p className="text-xs text-gray-500 mt-2">– Raj, California</p>
-            </CardContent>
-          </Card>
-        </div>
-      </section>
-    </div>
   );
 }
