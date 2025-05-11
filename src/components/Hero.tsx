@@ -3,15 +3,12 @@
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
-import { useTheme } from '@/contexts/ThemeContext';
 
 interface HeroProps {
   className?: string;
 }
 
 export default function Hero({ className = '' }: HeroProps) {
-  const { isDarkMode } = useTheme();
-
   return (
     <section
       className={`relative min-h-[90vh] w-full flex items-center justify-center overflow-hidden ${className}`}
@@ -19,29 +16,30 @@ export default function Hero({ className = '' }: HeroProps) {
     >
       {/* Background Image */}
       <Image
-        src="/images/santa-fe-og.jpg"
-        alt="Santa Fe landscape at sunset"
+        src="/images/site-santa-fe.jpg"
+        alt="Santa Fe cityscape at sunset"
         fill
         priority
-        className="object-cover"
+        className="object-cover brightness-[0.85] dark:brightness-[0.7]"
         sizes="100vw"
+        quality={100}
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-black/70" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60 dark:from-black/60 dark:to-black/80" />
 
       {/* Content Container */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="relative z-10 container mx-auto px-4 text-center text-white"
+        className="relative z-10 container mx-auto px-4 text-center"
       >
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-serif font-bold mb-6 tracking-wide"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-200 to-amber-100 drop-shadow-lg"
         >
           SANTA FE SELECTION
         </motion.h1>
@@ -50,29 +48,45 @@ export default function Hero({ className = '' }: HeroProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
-          className="text-lg sm:text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto"
+          className="text-lg sm:text-xl md:text-2xl font-light mb-12 max-w-2xl mx-auto text-white/90 drop-shadow-md"
         >
-          Discover the authentic Santa Fe experience
+          Your curated guide to the art, culture, and soul of The City Different
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.8 }}
+          className="space-x-6"
         >
           <Link
-            href="/plan"
+            href="/dining"
             className="
-              inline-block bg-amber-500 hover:bg-amber-600 
-              text-black font-semibold px-8 py-4 
-              rounded-full text-sm md:text-base
-              transition-all duration-300 ease-in-out
-              hover:transform hover:scale-105
-              shadow-lg hover:shadow-xl
+              inline-block bg-amber-500 hover:bg-amber-600
+              text-black font-medium px-8 py-3
+              rounded-full text-base
+              transition-all duration-300 ease-out
+              hover:scale-105 hover:shadow-amber-500/25
+              shadow-lg
+              dark:text-white/90 dark:bg-amber-600 dark:hover:bg-amber-700
             "
-            aria-label="Plan your Santa Fe trip"
           >
-            PLAN YOUR TRIP
+            Explore Dining
+          </Link>
+          <Link
+            href="/activities"
+            className="
+              inline-block bg-white/10 hover:bg-white/20
+              text-white font-medium px-8 py-3
+              rounded-full text-base
+              transition-all duration-300 ease-out
+              hover:scale-105
+              backdrop-blur-sm
+              border border-white/20 hover:border-white/30
+              shadow-lg shadow-black/5
+            "
+          >
+            Browse Activities
           </Link>
         </motion.div>
       </motion.div>

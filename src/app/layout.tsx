@@ -1,17 +1,13 @@
 import type { Metadata } from "next";
-import { Inter, Inconsolata } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
+import Link from "next/link";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
 const inter = Inter({
+  subsets: ["latin"],
   variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const mono = Inconsolata({
-  variable: "--font-mono",
-  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -51,64 +47,95 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${mono.variable} font-sans antialiased`}>
-        <ThemeProvider>
-          <header className="bg-background shadow-sm">
+      <body className={`${inter.variable} font-sans antialiased`}>
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
             <div className="container mx-auto px-4 py-4">
               <nav className="flex justify-between items-center">
-                <div className="text-2xl font-bold text-red-700">Santa Fe Selection</div>
-                <div className="flex items-center space-x-4">
-                  <a href="/" className="text-foreground/80 hover:text-red-700">Home</a>
-                  <a href="/about" className="text-foreground/80 hover:text-red-700">About</a>
-                  <a href="/contact" className="text-foreground/80 hover:text-red-700">Contact</a>
+                <Link href="/" className="flex items-center space-x-2">
+                  <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-amber-500 to-red-600">
+                    Santa Fe Selection
+                  </span>
+                </Link>
+                <div className="hidden md:flex items-center space-x-6">
+                  <Link href="/dining" className="text-foreground/80 hover:text-amber-600 transition-colors">
+                    Dining
+                  </Link>
+                  <Link href="/activities" className="text-foreground/80 hover:text-amber-600 transition-colors">
+                    Activities
+                  </Link>
+                  <Link href="/lodging" className="text-foreground/80 hover:text-amber-600 transition-colors">
+                    Lodging
+                  </Link>
+                  <Link href="/art" className="text-foreground/80 hover:text-amber-600 transition-colors">
+                    Art & Culture
+                  </Link>
                   <ThemeToggle />
                 </div>
               </nav>
             </div>
           </header>
 
-          <main className="min-h-screen">
+          <main className="min-h-screen bg-background text-foreground">
             {children}
           </main>
 
-          <footer className="bg-white border-t">
-            <div className="container mx-auto px-4 py-8">
+          <footer className="border-t bg-gradient-to-b from-background to-muted/20">
+            <div className="container mx-auto px-4 py-12">
               <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Santa Fe Selection</h3>
-                  <p className="text-gray-600">Your ultimate guide to exploring Santa Fe's art, culture, and cuisine.</p>
+                  <h3 className="text-lg font-semibold mb-4 text-amber-600">Santa Fe Selection</h3>
+                  <p className="text-muted-foreground">Your ultimate guide to exploring Santa Fe's art, culture, and cuisine.</p>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-amber-600">Quick Links</h3>
                   <ul className="space-y-2">
-                    <li><a href="/" className="text-gray-600 hover:text-red-700">Home</a></li>
-                    <li><a href="/about" className="text-gray-600 hover:text-red-700">About Us</a></li>
-                    <li><a href="/contact" className="text-gray-600 hover:text-red-700">Contact</a></li>
+                    <li>
+                      <Link href="/dining" className="text-muted-foreground hover:text-amber-600 transition-colors">
+                        Dining Guide
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/activities" className="text-muted-foreground hover:text-amber-600 transition-colors">
+                        Activities
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href="/lodging" className="text-muted-foreground hover:text-amber-600 transition-colors">
+                        Where to Stay
+                      </Link>
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Connect With Us</h3>
-                  <div className="space-y-2">
-                    <a href="#" className="text-gray-600 hover:text-red-700">Instagram</a>
-                    <a href="#" className="text-gray-600 hover:text-red-700">Facebook</a>
-                    <a href="#" className="text-gray-600 hover:text-red-700">Twitter</a>
-                  </div>
+                  <h3 className="text-lg font-semibold mb-4 text-amber-600">Connect With Us</h3>
+                  <ul className="space-y-2">
+                    <li>
+                      <a href="#" className="text-muted-foreground hover:text-amber-600 transition-colors">Instagram</a>
+                    </li>
+                    <li>
+                      <a href="#" className="text-muted-foreground hover:text-amber-600 transition-colors">Facebook</a>
+                    </li>
+                    <li>
+                      <a href="#" className="text-muted-foreground hover:text-amber-600 transition-colors">Twitter</a>
+                    </li>
+                  </ul>
                 </div>
                 <div>
-                  <h3 className="text-lg font-semibold mb-4">Newsletter</h3>
+                  <h3 className="text-lg font-semibold mb-4 text-amber-600">Newsletter</h3>
                   <form className="space-y-2">
                     <input
                       type="email"
                       placeholder="Enter your email"
-                      className="w-full px-4 py-2 border rounded-lg"
+                      className="w-full px-4 py-2 rounded-md bg-background border border-input ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     />
-                    <button className="w-full bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-red-800">
+                    <button className="w-full bg-amber-600 text-white px-4 py-2 rounded-md hover:bg-amber-700 transition-colors">
                       Subscribe
                     </button>
                   </form>
                 </div>
               </div>
-              <div className="border-t mt-8 pt-8 text-center text-gray-600">
+              <div className="border-t mt-8 pt-8 text-center text-muted-foreground">
                 <p>&copy; {new Date().getFullYear()} Santa Fe Selection. All rights reserved.</p>
               </div>
             </div>

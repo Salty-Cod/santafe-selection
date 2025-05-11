@@ -5,12 +5,12 @@ const nextConfig = {
     unoptimized: false,
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "localhost",
+        protocol: "https",
+        hostname: "images.unsplash.com",
       },
       {
         protocol: "https",
-        hostname: "localhost",
+        hostname: "source.unsplash.com",
       },
     ],
   },

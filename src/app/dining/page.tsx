@@ -1,11 +1,16 @@
 'use client';
 
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { FeaturedSection } from '@/components/FeaturedSection';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
+import { FilterPanel } from '@/components/FilterPanel';
+import { FilterChips } from '@/components/FilterChips';
+import { diningFilters } from '@/lib/filters';
+import { restaurants } from '@/data/restaurants';
 
-const CUISINES = [
+const CUISINE_CATEGORIES = [
   {
     title: 'New Mexican',
     description: 'Traditional local cuisine with famous red and green chile.',
@@ -48,9 +53,103 @@ const TOP_PICKS = [
 ];
 
 export default function DiningPage() {
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
+
+  const filteredRestaurants = useMemo(() => {
+    if (selectedFilters.length === 0) return restaurants;
+
+    return restaurants.filter(restaurant => {
+      return selectedFilters.every(filter => {
+        // Find which category this filter belongs to
+        const filterCategory = diningFilters.find(category =>
+          category.options.some(option => option.id === filter)
+        );
+
+        if (!filterCategory) return false;
+
+        switch (filterCategory.category.toLowerCase()) {
+          case 'cuisine':
+            return restaurant.cuisine.includes(filter);
+          case 'dietary':
+            return restaurant.dietary.includes(filter);
+          case 'price range':
+            return restaurant.priceRange === filter;
+          case 'features':
+            return restaurant.features.includes(filter);
+          default:
+            return false;
+        }
+      });
+    });
+  }, [selectedFilters]);
+
   return (
     <main className="min-h-screen bg-white dark:bg-gray-900">
-      <section className="pt-24 pb-12">
+      <section className="pt-24 pb-6">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center max-w-4xl mx-auto"
+          >
+            <h1 className="text-4xl md:text-5xl font-serif font-bold text-amber-800 dark:text-amber-500 mb-6">
+              Santa Fe Dining Guide
+            </h1>
+            <p className="text-lg text-gray-700 dark:text-gray-300 mb-12">
+              Experience the unique flavors of Santa Fe, from traditional New Mexican cuisine to innovative fine dining.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="pb-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8">
+            <FilterPanel
+              filters={diningFilters}
+              selectedFilters={selectedFilters}
+              onFilterChange={setSelectedFilters}
+              className="lg:sticky lg:top-24 lg:h-fit"
+            />
+            <div className="space-y-6">
+              <FilterChips
+                selectedFilters={selectedFilters.map(id => {
+                  const option = diningFilters
+                    .flatMap(category => category.options)
+                    .find(opt => opt.id === id);
+                  return {
+                    id,
+                    label: option?.label || '',
+                    category: option?.category || ''
+                  };
+                })}
+                onRemove={(id) => setSelectedFilters(prev => prev.filter(f => f !== id))}
+              />
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+                {filteredRestaurants.map((restaurant) => (
+                  <Card key={restaurant.id}>
+                    <CardContent className="p-4">
+                      <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                        <Image
+                          src={restaurant.image}
+                          alt={restaurant.title}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                      <h3 className="text-xl font-bold text-amber-800 dark:text-amber-500 mb-2">
+                        {restaurant.title}
+                      </h3>
+                      <p className="text-gray-700 dark:text-gray-300">
+                        {restaurant.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -69,7 +168,7 @@ export default function DiningPage() {
 
       <FeaturedSection
         title="Browse by Cuisine"
-        items={CUISINES}
+        items={CUISINE_CATEGORIES}
         className="bg-amber-50/50 dark:bg-amber-950/10"
       />
 
