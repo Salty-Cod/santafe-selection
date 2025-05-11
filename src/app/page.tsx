@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,6 +10,8 @@ import { useTheme } from '@/contexts/ThemeContext';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { SearchBar } from '@/components/SearchBar';
 import { FeaturedSection } from '@/components/FeaturedSection';
+import { FilterPanel } from '@/components/FilterPanel';
+import { FilterChips } from '@/components/FilterChips';
 import Hero from '@/components/Hero';
 
 interface Item {
@@ -17,6 +19,10 @@ interface Item {
   description: string;
   image: string;
   link: string;
+  categories?: string[];
+  features?: string[];
+  price?: 'budget' | 'moderate' | 'luxury';
+  accessibility?: string[];
 }
 
 const DINING: Item[] = [
@@ -126,9 +132,60 @@ const ART_CULTURE: Item[] = [
 
 export default function Home() {
   const [search, setSearch] = useState('');
+  const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
 
   const handleSearch = (value: string) => {
     setSearch(value);
+  };
+
+  const filters = [
+    {
+      category: 'Price Range',
+      options: [
+        { id: 'price-budget', label: 'Budget Friendly', category: 'Price' },
+        { id: 'price-moderate', label: 'Moderate', category: 'Price' },
+        { id: 'price-luxury', label: 'Luxury', category: 'Price' },
+      ],
+    },
+    {
+      category: 'Features',
+      options: [
+        { id: 'feature-family', label: 'Family Friendly', category: 'Features' },
+        { id: 'feature-outdoor', label: 'Outdoor', category: 'Features' },
+        { id: 'feature-indoor', label: 'Indoor', category: 'Features' },
+        { id: 'feature-free', label: 'Free', category: 'Features' },
+      ],
+    },
+    {
+      category: 'Accessibility',
+      options: [
+        { id: 'access-wheelchair', label: 'Wheelchair Accessible', category: 'Accessibility' },
+        { id: 'access-parking', label: 'Easy Parking', category: 'Accessibility' },
+        { id: 'access-transit', label: 'Public Transit', category: 'Accessibility' },
+      ],
+    },
+  ];
+
+  const handleFilterChange = (newFilters: string[]) => {
+    setSelectedFilters(newFilters);
+  };
+
+  const selectedFilterChips = useMemo(() => {
+    return filters
+      .flatMap(category => 
+        category.options.filter(option => 
+          selectedFilters.includes(option.id)
+        )
+      )
+      .map(option => ({
+        id: option.id,
+        label: option.label,
+        category: option.category,
+      }));
+  }, [selectedFilters, filters]);
+
+  const handleRemoveFilter = (filterId: string) => {
+    setSelectedFilters(prev => prev.filter(id => id !== filterId));
   };
 
   return (
@@ -137,7 +194,27 @@ export default function Home() {
       <Hero />
 
       {/* Main Content */}
-      <div className="pt-24">
+      <div className="pt-12">
+        {/* Filter Section */}
+        <section className="py-8 bg-amber-50/50 dark:bg-amber-950/10">
+          <div className="container mx-auto px-4">
+            <div className="flex flex-col md:flex-row gap-4 items-start">
+              <div className="w-full md:w-64 flex-shrink-0">
+                <FilterPanel
+                  filters={filters}
+                  selectedFilters={selectedFilters}
+                  onFilterChange={handleFilterChange}
+                  className="sticky top-24"
+                />
+              </div>
+              <div className="flex-grow">
+                <FilterChips
+                  selectedFilters={selectedFilterChips}
+                  onRemove={handleRemoveFilter}
+                  className="mb-6"
+                />
+
+                {/* Search Bar */}
         {/* Search Bar */}
         <div className="container mx-auto px-4 mb-12">
           <SearchBar
@@ -264,6 +341,10 @@ export default function Home() {
                   <p className="text-sm text-amber-700 dark:text-amber-500 font-medium">– Maria, New York</p>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </section>
+              </div>
             </div>
           </div>
         </section>
