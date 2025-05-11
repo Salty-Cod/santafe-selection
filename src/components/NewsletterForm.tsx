@@ -1,14 +1,13 @@
+import * as React from "react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useTheme } from "@/contexts/ThemeContext";
 
 interface NewsletterFormProps {
   className?: string;
 }
 
 export function NewsletterForm({ className }: NewsletterFormProps) {
-  const { isDarkMode } = useTheme();
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 

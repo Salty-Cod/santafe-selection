@@ -1,8 +1,8 @@
+import * as React from "react";
 import { useState, useRef, useEffect } from "react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { SearchIcon } from "lucide-react";
-import { useTheme } from "@/contexts/ThemeContext";
 
 interface SearchBarProps {
   value: string;
@@ -17,7 +17,6 @@ export function SearchBar({
   placeholder = "Search...",
   className = ""
 }: SearchBarProps) {
-  const { isDarkMode } = useTheme();
   const [isFocused, setIsFocused] = useState(false);
   const searchRef = useRef<HTMLInputElement>(null);
 
