@@ -215,19 +215,18 @@ export default function Home() {
                 />
 
                 {/* Search Bar */}
-        {/* Search Bar */}
-        <div className="container mx-auto px-4 mb-12">
-          <SearchBar
-            value={search}
-            onChange={handleSearch}
-            placeholder="Search activities, restaurants, lodging..."
-          />
-        </div>
+                <div className="mb-12">
+                  <SearchBar
+                    value={search}
+                    onChange={handleSearch}
+                    placeholder="Search for activities, dining, lodging..."
+                  />
+                </div>
 
-        {/* Newsletter */}
-        <div className="container mx-auto px-4 mb-16">
-          <NewsletterForm />
-        </div>
+                {/* Newsletter */}
+                <div className="container mx-auto px-4 mb-16">
+                  <NewsletterForm />
+                </div>
 
         {/* Featured Sections */}
         <FeaturedSection
@@ -345,6 +344,101 @@ export default function Home() {
           </div>
         </section>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Featured Sections */}
+        <FeaturedSection title="Activities" items={ACTIVITIES} />
+        <FeaturedSection title="Dining" items={DINING} />
+        <FeaturedSection title="Lodging" items={LODGING} />
+        <FeaturedSection title="Shopping" items={SHOPPING} />
+        <FeaturedSection title="Art & Culture" items={ART_CULTURE} />
+
+        {/* About Section */}
+        <section className="py-16 bg-amber-50/50 dark:bg-amber-950/10">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-amber-800 dark:text-amber-500 mb-6">
+                About Santa Fe
+              </h2>
+              <p className="text-lg text-gray-700 dark:text-gray-300 mb-8">
+                Discover the magic of Santa Fe, where centuries-old adobe
+                architecture meets vibrant art markets, and traditional New
+                Mexican flavors blend with innovative Southwest cuisine.
+              </p>
+              <Link
+                href="/about"
+                className="inline-block bg-amber-700 hover:bg-amber-800 text-white font-medium px-8 py-3 rounded-full transition-all duration-300 hover:shadow-lg hover:scale-105"
+              >
+                Learn More About Santa Fe
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-16">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-amber-800 dark:text-amber-500 mb-8 text-center">
+              What Visitors Are Saying
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <Image 
+                      src="/images/testimonials-1.jpg" 
+                      alt="Visitor testimonial" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 italic">
+                    "One of the most beautiful cities we've visited. The art and culture blew us away!"
+                  </p>
+                  <p className="text-sm text-amber-700 dark:text-amber-500 font-medium">– Jenna, Texas</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <Image 
+                      src="/images/testimonials-2.jpg" 
+                      alt="Visitor testimonial" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 italic">
+                    "Santa Fe Selection helped us plan a perfect trip. The guide was spot-on."
+                  </p>
+                  <p className="text-sm text-amber-700 dark:text-amber-500 font-medium">– Raj, California</p>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 md:col-span-2 lg:col-span-1">
+                <CardContent className="p-6">
+                  <div className="relative h-48 mb-4 rounded-lg overflow-hidden">
+                    <Image 
+                      src="/images/testimonials-3.jpg" 
+                      alt="Visitor testimonial" 
+                      fill 
+                      className="object-cover"
+                    />
+                  </div>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 italic">
+                    "The local cuisine and art galleries exceeded our expectations. Can't wait to return!"
+                  </p>
+                  <p className="text-sm text-amber-700 dark:text-amber-500 font-medium">– Maria, New York</p>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </section>
