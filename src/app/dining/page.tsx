@@ -14,19 +14,19 @@ const CUISINE_CATEGORIES = [
   {
     title: 'New Mexican',
     description: 'Traditional local cuisine with famous red and green chile.',
-    image: '/images/new-mexican.jpg',
+    image: 'https://images.unsplash.com/photo-1573225342350-16731dd9bf83',
     link: '/dining/new-mexican',
   },
   {
     title: 'Fine Dining',
     description: 'Upscale restaurants featuring innovative Southwestern cuisine.',
-    image: '/images/fine-dining.jpg',
+    image: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0',
     link: '/dining/fine-dining',
   },
   {
     title: 'Casual Eats',
     description: 'Relaxed cafes and local favorites for everyday dining.',
-    image: '/images/casual-eats.jpg',
+    image: 'https://images.unsplash.com/photo-1559339352-11d035aa65de',
     link: '/dining/casual',
   },
 ];
@@ -35,19 +35,19 @@ const TOP_PICKS = [
   {
     title: 'The Shed',
     description: 'Historic restaurant known for authentic New Mexican dishes.',
-    image: '/images/the-shed.jpg',
+    image: 'https://images.unsplash.com/photo-1552566626-52f8b828add9',
     link: '/dining/the-shed',
   },
   {
     title: 'Geronimo',
     description: 'Fine dining in a historic adobe on Canyon Road.',
-    image: '/images/geronimo.jpg',
+    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
     link: '/dining/geronimo',
   },
   {
     title: 'Cafe Pasqual\'s',
     description: 'Colorful cafe serving organic New Mexican and international cuisine.',
-    image: '/images/cafe-pasquals.jpg',
+    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5',
     link: '/dining/cafe-pasquals',
   },
 ];
@@ -187,7 +187,7 @@ export default function DiningPage() {
               <CardContent className="p-6">
                 <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/chile.jpg"
+                    src="https://images.unsplash.com/photo-1573225342350-16731dd9bf83"
                     alt="Red and green chile"
                     fill
                     className="object-cover"
@@ -205,7 +205,7 @@ export default function DiningPage() {
               <CardContent className="p-6">
                 <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/farmers-market.jpg"
+                    src="https://images.unsplash.com/photo-1488459716781-31db52582fe9"
                     alt="Santa Fe Farmers Market"
                     fill
                     className="object-cover"
