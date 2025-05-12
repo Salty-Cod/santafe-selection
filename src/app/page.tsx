@@ -86,6 +86,7 @@ const ACTIVITIES: Item[] = [
   },
 ];
 
+// eslint-disable-next-line no-unused-vars
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
