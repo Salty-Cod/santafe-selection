@@ -9,19 +9,19 @@ const GALLERY_TYPES = [
   {
     title: 'Contemporary Art',
     description: 'Modern and contemporary art galleries featuring international artists.',
-    image: '/images/contemporary.jpg',
+    image: 'https://images.unsplash.com/photo-1594540637720-9b14737e0c86',
     link: '/art-galleries/contemporary',
   },
   {
     title: 'Traditional & Native Art',
     description: 'Native American and traditional Southwestern art galleries.',
-    image: '/images/native-art.jpg',
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
     link: '/art-galleries/traditional',
   },
   {
     title: 'Photography & New Media',
     description: 'Galleries specializing in photography and digital art.',
-    image: '/images/photography.jpg',
+    image: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5',
     link: '/art-galleries/photography',
   },
 ];
@@ -30,19 +30,19 @@ const FEATURED_GALLERIES = [
   {
     title: 'SITE Santa Fe',
     description: 'Contemporary art museum with rotating international exhibitions.',
-    image: '/images/site-santa-fe.jpg',
+    image: 'https://images.unsplash.com/photo-1594540637720-9b14737e0c86',
     link: '/art-galleries/site-santa-fe',
   },
   {
     title: 'Georgia O\'Keeffe Museum',
     description: 'Dedicated to the artistic legacy of Georgia O\'Keeffe.',
-    image: '/images/okeeffe-museum.jpg',
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
     link: '/art-galleries/okeeffe-museum',
   },
   {
     title: 'Museum of International Folk Art',
     description: 'World\'s largest collection of folk art.',
-    image: '/images/folk-art.jpg',
+    image: 'https://images.unsplash.com/photo-1577083552431-6e5fd01988ec',
     link: '/art-galleries/folk-art-museum',
   },
 ];
@@ -88,7 +88,7 @@ export default function ArtGalleriesPage() {
               <CardContent className="p-6">
                 <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/canyon-road-galleries.jpg"
+                    src="https://images.unsplash.com/photo-1594540637720-9b14737e0c86"
                     alt="Canyon Road Galleries"
                     fill
                     className="object-cover"
@@ -106,7 +106,7 @@ export default function ArtGalleriesPage() {
               <CardContent className="p-6">
                 <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src="/images/railyard-arts.jpg"
+                    src="https://images.unsplash.com/photo-1582719508461-905c673771fd"
                     alt="Railyard Arts District"
                     fill
                     className="object-cover"
