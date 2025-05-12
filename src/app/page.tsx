@@ -69,13 +69,13 @@ const ACTIVITIES: Item[] = [
   {
     title: 'Canyon Road Art Walk',
     description: 'Explore one of the most iconic streets in Santa Fe full of galleries and history.',
-    image: 'https://images.unsplash.com/photo-1577742644892-d3cd7f1b0b5c',
+    image: 'https://images.unsplash.com/photo-1594540637720-9b14737e0c86',
     link: '/activities/canyon-road',
   },
   {
     title: "Georgia O'Keeffe Museum",
     description: "Discover the work and legacy of one of New Mexico's most beloved artists.",
-    image: 'https://images.unsplash.com/photo-1582711012153-0d6b7462e6d8',
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
     link: '/activities/okeeffe-museum',
   },
   {
