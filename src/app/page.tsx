@@ -2,10 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { useTheme } from 'next-themes';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { SearchBar } from '@/components/SearchBar';
@@ -89,27 +86,6 @@ const ACTIVITIES: Item[] = [
   },
 ];
 
-const SHOPPING: Item[] = [
-  {
-    title: 'Santa Fe Plaza',
-    description: 'Historic heart of the city with Native American artisans and local shops.',
-    image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc',
-    link: '/shopping/plaza',
-  },
-  {
-    title: 'Rainbow Man',
-    description: 'Vintage Native American jewelry and folk art.',
-    image: 'https://images.unsplash.com/photo-1584302179602-e4c3d3fd629d',
-    link: '/shopping/rainbow-man',
-  },
-  {
-    title: 'Double Take',
-    description: 'High-end consignment with designer Western wear.',
-    image: 'https://images.unsplash.com/photo-1441984904996-e0b6ba687e04',
-    link: '/shopping/double-take',
-  },
-];
-
 const ART_CULTURE: Item[] = [
   {
     title: 'SITE Santa Fe',
@@ -181,14 +157,15 @@ export default function Home() {
             <div className="flex flex-col md:flex-row gap-4 items-start">
               <div className="w-full md:w-1/3">
                 <FilterPanel
+                  filters={[]}
                   selectedFilters={selectedFilters}
                   onFilterChange={handleFilterChange}
                 />
               </div>
               <div className="w-full md:w-2/3">
-                <SearchBar onSearch={handleSearch} />
+                <SearchBar value="" onChange={handleSearch} placeholder="Search activities..." />
                 <FilterChips
-                  selectedFilters={selectedFilters}
+                  selectedFilters={selectedFilters.map(id => ({ id, label: id, category: 'Filter' }))}
                   onRemove={handleRemoveFilter}
                 />
               </div>
@@ -200,25 +177,21 @@ export default function Home() {
         <FeaturedSection
           title="Featured Activities"
           items={filteredActivities}
-          link="/activities"
-          linkText="View All Activities"
+          className="bg-white dark:bg-gray-900"
         />
 
         {/* Featured Dining Section */}
         <FeaturedSection
           title="Featured Dining"
           items={filteredDining}
-          link="/dining"
-          linkText="View All Dining"
-          bgColor="bg-amber-50 dark:bg-gray-800"
+          className="bg-amber-50 dark:bg-gray-800"
         />
 
         {/* Featured Lodging Section */}
         <FeaturedSection
           title="Featured Lodging"
           items={filteredLodging}
-          link="/lodging"
-          linkText="View All Lodging"
+          className="bg-white dark:bg-gray-900"
         />
 
         {/* Newsletter Section */}
