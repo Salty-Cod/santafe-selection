@@ -86,27 +86,6 @@ const ACTIVITIES: Item[] = [
   },
 ];
 
-const ART_CULTURE: Item[] = [
-  {
-    title: 'SITE Santa Fe',
-    description: 'Contemporary art museum with rotating international exhibitions.',
-    image: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3',
-    link: '/art-culture/site-santa-fe',
-  },
-  {
-    title: 'Museum Hill',
-    description: 'Four museums showcasing Native American, Spanish Colonial, and folk art.',
-    image: 'https://images.unsplash.com/photo-1518998053901-5348d3961a04',
-    link: '/art-culture/museum-hill',
-  },
-  {
-    title: 'Santa Fe Opera',
-    description: 'World-renowned outdoor opera theater with stunning sunset views.',
-    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3',
-    link: '/art-culture/opera',
-  },
-];
-
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedFilters, setSelectedFilters] = useState<string[]>([]);
