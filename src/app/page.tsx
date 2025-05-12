@@ -27,19 +27,19 @@ const DINING: Item[] = [
   {
     title: 'The Shed',
     description: 'Gastropub serving creative, farm-to-table comfort food.',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4',
+    image: 'https://images.unsplash.com/photo-1534531173927-aeb928d54385',
     link: '/dining/the-shed',
   },
   {
     title: 'La Choza Restaurant',
     description: 'Traditional New Mexican cuisine in a cozy, rustic setting.',
-    image: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836',
+    image: 'https://images.unsplash.com/photo-1583484963886-cfe2bff2945f',
     link: '/dining/la-choza',
   },
   {
     title: 'The Plaza Cafe',
     description: 'Santa Fe institution serving classic American comfort food.',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5',
+    image: 'https://images.unsplash.com/photo-1523381294911-8d3cead13475',
     link: '/dining/the-plaza-cafe',
   },
 ];
@@ -48,19 +48,19 @@ const LODGING: Item[] = [
   {
     title: 'Hotel St. Francis',
     description: 'Historic hotel with elegant rooms and a relaxing courtyard.',
-    image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945',
+    image: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb',
     link: '/lodging/hotel-st-francis',
   },
   {
     title: 'Inn and Spa at Loretto',
     description: 'Luxurious accommodations with a full-service spa and stunning views.',
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
+    image: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa',
     link: '/lodging/inn-and-spa-at-loretto',
   },
   {
     title: 'La Fonda on the Plaza',
     description: 'Iconic hotel with comfortable rooms and a vibrant atmosphere.',
-    image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9',
+    image: 'https://images.unsplash.com/photo-1445019980597-93fa8acb246c',
     link: '/lodging/la-fonda-on-the-plaza',
   },
 ];
@@ -69,19 +69,19 @@ const ACTIVITIES: Item[] = [
   {
     title: 'Canyon Road Art Walk',
     description: 'Explore one of the most iconic streets in Santa Fe full of galleries and history.',
-    image: 'https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8',
+    image: 'https://images.unsplash.com/photo-1577742644892-d3cd7f1b0b5c',
     link: '/activities/canyon-road',
   },
   {
     title: "Georgia O'Keeffe Museum",
     description: "Discover the work and legacy of one of New Mexico's most beloved artists.",
-    image: 'https://images.unsplash.com/photo-1544967082-d9d25d867d66',
+    image: 'https://images.unsplash.com/photo-1582711012153-0d6b7462e6d8',
     link: '/activities/okeeffe-museum',
   },
   {
     title: 'Bandelier National Monument',
     description: 'Ancient cliff dwellings and petroglyphs in a beautiful canyon setting.',
-    image: 'https://images.unsplash.com/photo-1600103359064-6cda8ea4f0d3',
+    image: 'https://images.unsplash.com/photo-1604537466158-719b1972feb8',
     link: '/activities/bandelier',
   },
 ];
@@ -90,7 +90,7 @@ const ART_CULTURE: Item[] = [
   {
     title: 'SITE Santa Fe',
     description: 'Contemporary art museum with rotating international exhibitions.',
-    image: 'https://images.unsplash.com/photo-1554907984-15263bfd63bd',
+    image: 'https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3',
     link: '/art-culture/site-santa-fe',
   },
   {
@@ -102,7 +102,7 @@ const ART_CULTURE: Item[] = [
   {
     title: 'Santa Fe Opera',
     description: 'World-renowned outdoor opera theater with stunning sunset views.',
-    image: 'https://images.unsplash.com/photo-1507676184212-d03ab07a01bf',
+    image: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3',
     link: '/art-culture/opera',
   },
 ];
