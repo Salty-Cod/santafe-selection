@@ -11,17 +11,20 @@ interface FilterOption {
   category: string;
 }
 
-interface FilterPanelProps {
+interface FilterCategory {
   category: string;
   options: FilterOption[];
+}
+
+interface FilterPanelProps {
+  filters: FilterCategory[];
   selectedFilters: string[];
   onFilterChange: (filters: string[]) => void;
   className?: string;
 }
 
 export function FilterPanel({
-  category,
-  options,
+  filters,
   selectedFilters,
   onFilterChange,
   className = '',
@@ -69,7 +72,8 @@ export function FilterPanel({
             className="overflow-hidden"
           >
             <div className="p-4 space-y-4">
-              <div key={category} className="space-y-2">
+              {filters.map(({ category, options }) => (
+                <div key={category} className="space-y-2">
                   <button
                     onClick={() => toggleCategory(category)}
                     className="flex items-center justify-between w-full text-left text-gray-900 dark:text-gray-100 font-medium"
@@ -104,6 +108,7 @@ export function FilterPanel({
                     )}
                   </AnimatePresence>
                 </div>
+              ))}
             </div>
           </motion.div>
         )}

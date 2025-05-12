@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { useTheme } from '@/contexts/ThemeContext';
+import { useTheme } from 'next-themes';
 import { NewsletterForm } from '@/components/NewsletterForm';
 import { SearchBar } from '@/components/SearchBar';
 import { FeaturedSection } from '@/components/FeaturedSection';
