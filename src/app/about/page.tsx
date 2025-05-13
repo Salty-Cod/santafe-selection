@@ -1,5 +1,14 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'About Santa Fe Selection | Your Curated Guide to Santa Fe',
+  description: 'Learn about Santa Fe Selection, your curated guide to the art, culture, dining, and accommodations in Santa Fe, New Mexico.',
+  openGraph: {
+    images: ['/images/santa-fe-og.jpg'],
+  },
+};
 
 export default function AboutPage() {
   return (
