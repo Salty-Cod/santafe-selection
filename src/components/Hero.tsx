@@ -16,17 +16,17 @@ export default function Hero({ className = '' }: HeroProps) {
     >
       {/* Background Image */}
       <Image
-        src="/images/site-santa-fe.jpg"
+        src="https://images.unsplash.com/photo-1594540637720-9b14737e0c86"
         alt="Santa Fe cityscape at sunset"
         fill
         priority
-        className="object-cover brightness-[0.85] dark:brightness-[0.7]"
+        className="object-cover brightness-75 dark:brightness-50"
         sizes="100vw"
         quality={100}
       />
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-black/60 dark:from-black/60 dark:to-black/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70 dark:from-black/80 dark:to-black/90" />
 
       {/* Content Container */}
       <motion.div
@@ -39,7 +39,7 @@ export default function Hero({ className = '' }: HeroProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
-          className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-amber-200 to-amber-100 drop-shadow-lg"
+          className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 tracking-tight text-amber-100 drop-shadow-lg"
         >
           SANTA FE SELECTION
         </motion.h1>
