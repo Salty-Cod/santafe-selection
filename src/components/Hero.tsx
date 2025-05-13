@@ -16,7 +16,7 @@ export default function Hero({ className = '' }: HeroProps) {
     >
       {/* Background Image */}
       <Image
-        src="https://images.unsplash.com/photo-1594540637720-9b14737e0c86"
+        src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80"
         alt="Santa Fe cityscape at sunset"
         fill
         priority

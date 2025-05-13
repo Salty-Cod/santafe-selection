@@ -15,7 +15,7 @@ interface FilterChipsProps {
   className?: string;
 }
 
-export function FilterChips({
+export default function FilterChips({
   selectedFilters,
   onRemove,
   className = '',

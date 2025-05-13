@@ -2,11 +2,11 @@
 
 import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { FeaturedSection } from '@/components/FeaturedSection';
+import FeaturedSection from '@/components/FeaturedSection';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
-import { FilterPanel } from '@/components/FilterPanel';
-import { FilterChips } from '@/components/FilterChips';
+import FilterPanel from '@/components/FilterPanel';
+import FilterChips from '@/components/FilterChips';
 import { diningFilters } from '@/lib/filters';
 import { restaurants } from '@/data/restaurants';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FeaturedSection } from '@/components/FeaturedSection';
+import FeaturedSection from '@/components/FeaturedSection';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 

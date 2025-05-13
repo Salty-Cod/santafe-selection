@@ -1,48 +1,55 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FeaturedSection } from '@/components/FeaturedSection';
+import FeaturedSection from '@/components/FeaturedSection';
 import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 
-const GALLERY_TYPES = [
+interface GalleryItem {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+}
+
+const GALLERY_TYPES: GalleryItem[] = [
   {
     title: 'Contemporary Art',
     description: 'Modern and contemporary art galleries featuring international artists.',
-    image: 'https://images.unsplash.com/photo-1594540637720-9b14737e0c86',
+    image: 'https://images.unsplash.com/photo-1727813581394-82b59b93cd25?auto=format&fit=crop&q=80',
     link: '/art-galleries/contemporary',
   },
   {
     title: 'Traditional & Native Art',
     description: 'Native American and traditional Southwestern art galleries.',
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80',
     link: '/art-galleries/traditional',
   },
   {
     title: 'Photography & New Media',
     description: 'Galleries specializing in photography and digital art.',
-    image: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5',
+    image: 'https://images.unsplash.com/photo-1554048612-b6a482bc67e5?auto=format&fit=crop&q=80',
     link: '/art-galleries/photography',
   },
 ];
 
-const FEATURED_GALLERIES = [
+const FEATURED_GALLERIES: GalleryItem[] = [
   {
     title: 'SITE Santa Fe',
     description: 'Contemporary art museum with rotating international exhibitions.',
-    image: 'https://images.unsplash.com/photo-1594540637720-9b14737e0c86',
+    image: 'https://images.unsplash.com/photo-1594540637720-9b14737e0c86?auto=format&fit=crop&q=80',
     link: '/art-galleries/site-santa-fe',
   },
   {
     title: 'Georgia O\'Keeffe Museum',
     description: 'Dedicated to the artistic legacy of Georgia O\'Keeffe.',
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd',
+    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80',
     link: '/art-galleries/okeeffe-museum',
   },
   {
     title: 'Museum of International Folk Art',
     description: 'World\'s largest collection of folk art.',
-    image: 'https://images.unsplash.com/photo-1577083552431-6e5fd01988ec',
+    image: 'https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?auto=format&fit=crop&q=80',
     link: '/art-galleries/folk-art-museum',
   },
 ];
@@ -88,10 +95,14 @@ export default function ArtGalleriesPage() {
               <CardContent className="p-6">
                 <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1594540637720-9b14737e0c86"
+                    src="https://images.unsplash.com/photo-1594540637720-9b14737e0c86?auto=format&fit=crop&q=80"
                     alt="Canyon Road Galleries"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-all duration-300 group-hover:scale-105"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={85}
+                    priority={false}
                   />
                 </div>
                 <h3 className="text-xl font-bold text-amber-800 dark:text-amber-500 mb-2">
@@ -106,10 +117,14 @@ export default function ArtGalleriesPage() {
               <CardContent className="p-6">
                 <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1582719508461-905c673771fd"
+                    src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80"
                     alt="Railyard Arts District"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-all duration-300 group-hover:scale-105"
+                    loading="lazy"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={85}
+                    priority={false}
                   />
                 </div>
                 <h3 className="text-xl font-bold text-amber-800 dark:text-amber-500 mb-2">

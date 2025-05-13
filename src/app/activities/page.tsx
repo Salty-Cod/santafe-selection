@@ -1,7 +1,9 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { FeaturedSection } from '@/components/FeaturedSection';
+import FeaturedSection from '@/components/FeaturedSection';
+
+
 
 const ACTIVITIES = [
   {

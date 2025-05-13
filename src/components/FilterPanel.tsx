@@ -23,7 +23,7 @@ interface FilterPanelProps {
   className?: string;
 }
 
-export function FilterPanel({
+export default function FilterPanel({
   filters,
   selectedFilters,
   onFilterChange,

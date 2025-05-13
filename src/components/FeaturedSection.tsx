@@ -3,20 +3,24 @@
 import { motion } from 'framer-motion';
 import { CategoryCard } from './CategoryCard';
 
-interface FeaturedItem {
+export interface FeaturedItem {
   title: string;
   description: string;
   image: string;
   link: string;
+  categories?: string[];
+  features?: string[];
+  price?: 'budget' | 'moderate' | 'luxury';
+  accessibility?: string[];
 }
 
-interface FeaturedSectionProps {
+export interface FeaturedSectionProps {
   title: string;
   items: FeaturedItem[];
   className?: string;
 }
 
-export function FeaturedSection({ title, items, className = '' }: FeaturedSectionProps) {
+export default function FeaturedSection({ title, items, className = '' }: FeaturedSectionProps) {
   return (
     <section className={`py-16 ${className}`}>
       <div className="container mx-auto px-4">
