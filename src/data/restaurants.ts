@@ -64,7 +64,7 @@ export const restaurants: Restaurant[] = [
     id: 'tomasitas',
     title: 'Tomasita\'s',
     description: 'Family-owned restaurant serving classic New Mexican dishes.',
-    image: 'https://images.unsplash.com/photo-1573225342350-16731dd9bf83',
+    image: 'https://images.unsplash.com/photo-1700625914554-bbe8da256868',
     link: '/dining/tomasitas',
     cuisine: ['new-mexican'],
     dietary: ['vegetarian'],

@@ -14,7 +14,7 @@ const CUISINE_CATEGORIES = [
   {
     title: 'New Mexican',
     description: 'Traditional local cuisine with famous red and green chile.',
-    image: 'https://images.unsplash.com/photo-1573225342350-16731dd9bf83',
+    image: 'https://images.unsplash.com/photo-1700625914554-bbe8da256868?',
     link: '/dining/new-mexican',
   },
   {

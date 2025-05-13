@@ -16,13 +16,13 @@ const GALLERY_TYPES: GalleryItem[] = [
   {
     title: 'Contemporary Art',
     description: 'Modern and contemporary art galleries featuring international artists.',
-    image: 'https://images.unsplash.com/photo-1727813581394-82b59b93cd25?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1666185762183-d3b56df000f0?auto=format&fit=crop&q=80',
     link: '/art-galleries/contemporary',
   },
   {
     title: 'Traditional & Native Art',
     description: 'Native American and traditional Southwestern art galleries.',
-    image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1722548352619-d921b5f35872?auto=format&fit=crop&q=80',
     link: '/art-galleries/traditional',
   },
   {
@@ -37,7 +37,7 @@ const FEATURED_GALLERIES: GalleryItem[] = [
   {
     title: 'SITE Santa Fe',
     description: 'Contemporary art museum with rotating international exhibitions.',
-    image: 'https://images.unsplash.com/photo-1594540637720-9b14737e0c86?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1744641405608-4a58f14d07b1?auto=format&fit=crop&q=80',
     link: '/art-galleries/site-santa-fe',
   },
   {
@@ -49,7 +49,7 @@ const FEATURED_GALLERIES: GalleryItem[] = [
   {
     title: 'Museum of International Folk Art',
     description: 'World\'s largest collection of folk art.',
-    image: 'https://images.unsplash.com/photo-1577083552431-6e5fd01988ec?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1744641405608-4a58f14d07b1?auto=format&fit=crop&q=80',
     link: '/art-galleries/folk-art-museum',
   },
 ];
@@ -95,7 +95,7 @@ export default function ArtGalleriesPage() {
               <CardContent className="p-6">
                 <div className="relative h-64 mb-4 rounded-lg overflow-hidden">
                   <Image
-                    src="https://images.unsplash.com/photo-1594540637720-9b14737e0c86?auto=format&fit=crop&q=80"
+                    src="https://images.unsplash.com/photo-1744641405608-4a58f14d07b1?auto=format&fit=crop&q=80"
                     alt="Canyon Road Galleries"
                     fill
                     className="object-cover transition-all duration-300 group-hover:scale-105"

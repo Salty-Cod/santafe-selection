@@ -45,7 +45,7 @@ const DINING: Item[] = [
   {
     title: 'La Choza Restaurant',
     description: 'Traditional New Mexican cuisine in a cozy, rustic setting.',
-    image: 'https://images.unsplash.com/photo-1583484963886-cfe2bff2945f?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1700625914554-bbe8da256868?auto=format&fit=crop&q=80',
     link: '/dining/la-choza',
     categories: ['New Mexican', 'Family Friendly'],
     price: 'moderate',
@@ -91,7 +91,7 @@ const ACTIVITIES: Item[] = [
   {
     title: 'Canyon Road Art Walk',
     description: 'Explore one of the most iconic streets in Santa Fe full of galleries and history.',
-    image: 'https://images.unsplash.com/photo-1594540637720-9b14737e0c86?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1744641405608-4a58f14d07b1?auto=format&fit=crop&q=80',
     link: '/activities/canyon-road',
     categories: ['Art', 'Walking Tour'],
     accessibility: ['Wheelchair Accessible'],
